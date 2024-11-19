@@ -1,4 +1,4 @@
-import { Counter } from "../counter/counter";
+import { FoodMenuItem } from "../food-menu-item/food-menu-item.jsx";
 
 export const FoodMenu = ({ foodMenu }) => {
   return (
@@ -8,23 +8,7 @@ export const FoodMenu = ({ foodMenu }) => {
       <ul>
         {foodMenu.map((food) => (
           <li key={food.id}>
-            {Boolean(food.name) && (
-              <p>
-                <b>Название блюда:</b> {food.name}
-              </p>
-            )}
-            {Boolean(food.price) && (
-              <p>
-                <b>Цена:</b> {food.price}
-              </p>
-            )}
-            {Array.isArray(food.ingredients) && food.ingredients.length > 0 && (
-              <p>
-                <b>Состав:</b> {food.ingredients.join(", ")}
-              </p>
-            )}
-
-            <Counter />
+            <FoodMenuItem {...food} />
           </li>
         ))}
       </ul>

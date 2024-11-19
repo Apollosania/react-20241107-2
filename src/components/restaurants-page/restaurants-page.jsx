@@ -1,23 +1,13 @@
-import style from "./style.module.css";
+import { restaurants } from "../../../materials/mock.js";
+import { RestaurantsTabs } from "../restaurantsTabs/restaurantsTabs.jsx";
+import { Layout } from "../layout/layout.jsx";
 
-export const RestaurantsPage = ({ children }) => {
+export const RestaurantsPage = () => {
   return (
-    <div className={style.wrapper}>
-      <header className={style.header}>
-        <div className={style.container}>
-          <h1>Список ресторанов</h1>
-        </div>
-      </header>
-
-      <main className={style.main}>
-        <div className={style.container}>{children}</div>
-      </main>
-
-      <footer className={style.footer}>
-        <div className={style.container}>
-          <address>Наши контакты</address>
-        </div>
-      </footer>
-    </div>
+    <Layout title={"Список ресторанов"}>
+      {Array.isArray(restaurants) && restaurants.length > 0 && (
+        <RestaurantsTabs restaurants={restaurants} />
+      )}
+    </Layout>
   );
 };

@@ -11,10 +11,5 @@
 }
 
 .restaurant {
-  display: none;
   padding: 20px 0;
-}
-
-.restaurant--active {
-  display: block;
 }
