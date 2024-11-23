@@ -11,7 +11,7 @@ export const DishCounter = () => {
         setCount((currentCount) => Math.min(currentCount + 1, 5))
       }
       decrement={() =>
-        setCount((currentCount) => Math.max(currentCount - 1, 5))
+        setCount((currentCount) => Math.max(currentCount - 1, 1))
       }
     />
   );
