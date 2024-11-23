@@ -1,20 +1,11 @@
-import { useEffect, useRef } from "react";
-import ScrollProgress from "scrollprogress";
+import { ProgressBar } from "../progress-bar/progress-bar.jsx";
 
 import style from "./style.module.css";
 
 export const Layout = ({ title, children }) => {
-  const wrapperRef = useRef(null);
-
-  useEffect(() => {
-    new ScrollProgress((x, y) => {
-      wrapperRef.current.style.width = y * 100 + "%";
-    });
-  }, []);
-
   return (
     <>
-      <div className={style.progressBar} ref={wrapperRef} />
+      <ProgressBar />
       <div className={style.wrapper}>
         <header className={style.header}>
           <div className={style.container}>
