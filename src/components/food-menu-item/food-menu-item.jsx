@@ -1,4 +1,4 @@
-import { Counter } from "../counter/counter.jsx";
+import { DishCounter } from "../dish-counter/dish-counter";
 
 export const FoodMenuItem = ({ name, price, ingredients }) => {
   if (!name || !price) {
@@ -21,7 +21,7 @@ export const FoodMenuItem = ({ name, price, ingredients }) => {
         </p>
       )}
 
-      <Counter />
+      <DishCounter />
     </div>
   );
 };

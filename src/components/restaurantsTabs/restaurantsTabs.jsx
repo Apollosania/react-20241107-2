@@ -25,6 +25,10 @@ export const RestaurantsTabs = ({ restaurants }) => {
       ))}
 
       {Boolean(currentRestaurant) && <Restaurant {...currentRestaurant} />}
+      {Boolean(currentRestaurant) && <Restaurant {...currentRestaurant} />}
+      {Boolean(currentRestaurant) && <Restaurant {...currentRestaurant} />}
+      {Boolean(currentRestaurant) && <Restaurant {...currentRestaurant} />}
+      {Boolean(currentRestaurant) && <Restaurant {...currentRestaurant} />}
     </>
   );
 };
