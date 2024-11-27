@@ -1,5 +1,6 @@
 import { FoodMenu } from "../food-menu/food-menu.jsx";
 import { Reviews } from "../reviews/reviews.jsx";
+import { Title } from "../typography/title";
 
 export const Restaurant = ({ name, menu, reviews }) => {
   if (!name) {
@@ -8,7 +9,9 @@ export const Restaurant = ({ name, menu, reviews }) => {
 
   return (
     <article>
-      <h2>{name}</h2>
+      <Title type={"primary"} level={2}>
+        {name}
+      </Title>
 
       {Array.isArray(menu) && menu.length > 0 && <FoodMenu foodMenu={menu} />}
 

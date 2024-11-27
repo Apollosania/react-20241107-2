@@ -1,0 +1,10 @@
+.wrapper {
+  padding: 1rem;
+  border: .0625rem solid var(--color-medium-gray);
+  border-radius: .25rem;
+}
+
+.title {
+  margin-top: 0;
+  margin-bottom: .5rem;
+}

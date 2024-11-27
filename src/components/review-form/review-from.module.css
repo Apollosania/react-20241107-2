@@ -1,0 +1,17 @@
+.wrapper {
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+}
+
+.formControl {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+}
+
+.title {
+  margin-top: 0;
+  margin-bottom: .75rem;
+}

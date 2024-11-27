@@ -1,21 +1,30 @@
+import { Text } from "../typography/text";
+import { Title } from "../typography/title";
+
+import style from "./review.module.css";
+
 export const Review = ({ user, text, rating }) => {
   if (!user || !text || !Number.isInteger(rating)) {
     return null;
   }
 
   return (
-    <div>
+    <article className={style.wrapper}>
+      <Title level={4} className={style.title}>
+        {user}
+      </Title>
+
       <p>
-        <b>Пользователь:</b> {user}
+        <Text>
+          <b>Текст:</b> {text}
+        </Text>
       </p>
 
       <p>
-        <b>Текст:</b> {text}
+        <Text>
+          <b>Рейтинг:</b> {rating} из 5
+        </Text>
       </p>
-
-      <p>
-        <b>Рейтинг:</b> {rating} из 5
-      </p>
-    </div>
+    </article>
   );
 };

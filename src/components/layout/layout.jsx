@@ -1,6 +1,8 @@
 import { ProgressBar } from "../progress-bar/progress-bar.jsx";
+import { Title } from "../typography/title";
+import { Text } from "../typography/text.jsx";
 
-import style from "./style.module.css";
+import style from "./layout.module.css";
 
 export const Layout = ({ title, children }) => {
   return (
@@ -9,7 +11,7 @@ export const Layout = ({ title, children }) => {
       <div className={style.wrapper}>
         <header className={style.header}>
           <div className={style.container}>
-            {Boolean(title) && <h1>{title}</h1>}
+            {Boolean(title) && <Title type={"reverse"}>{title}</Title>}
           </div>
         </header>
 
@@ -19,7 +21,9 @@ export const Layout = ({ title, children }) => {
 
         <footer className={style.footer}>
           <div className={style.container}>
-            <address>Наши контакты</address>
+            <address>
+              <Text type={"reverse"}>Наши контакты</Text>
+            </address>
           </div>
         </footer>
       </div>
