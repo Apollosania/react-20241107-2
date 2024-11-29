@@ -24,12 +24,10 @@ export const App = () => {
           title={name}
           onClick={() => setCurrentRestaurantId(id)}
           isActive={id === currentRestaurantId}
-        ></Tab>
+        />
       ))}
 
       {Boolean(currentRestaurant) && <Restaurant {...currentRestaurant} />}
-
-      <ReviewForm key={currentRestaurantId} />
     </Layout>
   );
 };

@@ -1,8 +1,9 @@
 import { FoodMenu } from "../food-menu/food-menu.jsx";
 import { Reviews } from "../reviews/reviews.jsx";
 import { Title } from "../typography/title";
+import { ReviewForm } from "../review-form/review-form.jsx";
 
-export const Restaurant = ({ name, menu, reviews }) => {
+export const Restaurant = ({ id, name, menu, reviews }) => {
   if (!name) {
     return null;
   }
@@ -18,6 +19,8 @@ export const Restaurant = ({ name, menu, reviews }) => {
       {Array.isArray(reviews) && reviews.length > 0 && (
         <Reviews reviews={reviews} />
       )}
+
+      <ReviewForm key={id} />
     </article>
   );
 };
