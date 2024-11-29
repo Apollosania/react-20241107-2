@@ -1,0 +1,27 @@
+@import '../../variables.css';
+
+.button {
+  user-select: none;
+  border-radius: .25rem;
+  padding: .75rem 1rem;
+  color: var(--color-white);
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.primary {
+  background-color: var(--color-primary);
+}
+
+.primary:hover {
+  background-color: var(--color-deep-orange);
+}
+
+.secondary {
+  background-color: var(--color-secondary);
+}
+
+.secondary:hover {
+  opacity: .75;
+}

@@ -1,0 +1,18 @@
+@import '../../variables.css';
+
+.button {
+  font-size: 1.125rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--color-light-blue-gray);
+  border: .0625rem solid var(--color-dark-blue-gray);
+  cursor: pointer;
+  color: var(--text-color-primary);
+}
+
+.buttonActive {
+  background-color: white;
+}
+
+.restaurant {
+  padding: 1.25rem 0;
+}

@@ -1,0 +1,29 @@
+@import '../../variables.css';
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.header {
+    padding: 2.5rem 0;
+    background-color: var(--color-bright-orange);
+}
+
+.main {
+    padding: 2rem 0;
+    flex: 1 0 auto;
+    background-color: var(--background-color-primary);
+}
+
+.footer {
+    padding: 2.5rem 0;
+    background-color: var(--color-dark-blue-gray);
+}
+
+.container {
+    max-width: 1170px;
+    margin: 0 auto;
+}
+
