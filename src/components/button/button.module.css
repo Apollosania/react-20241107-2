@@ -18,10 +18,26 @@
   background-color: var(--color-deep-orange);
 }
 
+.primaryDark {
+  background-color: var(--color-dark-gray);
+}
+
+.primaryDark:hover {
+  opacity: .75;
+}
+
 .secondary {
   background-color: var(--color-secondary);
 }
 
 .secondary:hover {
+  opacity: .75;
+}
+
+.secondaryDark {
+  background-color: var(--color-medium-gray);
+}
+
+.secondaryDark:hover {
   opacity: .75;
 }
