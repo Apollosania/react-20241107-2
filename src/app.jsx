@@ -1,33 +1,17 @@
-import { restaurants } from "../materials/mock.js";
 import { Layout } from "./components/layout/layout.jsx";
-import { ReviewForm } from "./components/review-form/review-form";
-import { Restaurant } from "./components/restaurant/restaurant.jsx";
-import { Tab } from "./components/tabs/tabs";
-import { useState } from "react";
-
+import { RestaurantsPage } from "./components/restaurants-page/restaurants-page";
 import "./style.css";
+import { ThemeContextProvider } from "./components/theme-context/theme-context-provider";
+import { AuthContextProvider } from "./components/auth-context/auth-context-provider";
 
 export const App = () => {
-  const [currentRestaurantId, setCurrentRestaurantId] = useState(
-    restaurants[0].id,
-  );
-
-  const currentRestaurant = restaurants.find(
-    ({ id }) => id === currentRestaurantId,
-  );
-
   return (
-    <Layout title={"Список ресторанов"}>
-      {restaurants?.map(({ name, id }) => (
-        <Tab
-          key={id}
-          title={name}
-          onClick={() => setCurrentRestaurantId(id)}
-          isActive={id === currentRestaurantId}
-        />
-      ))}
-
-      {Boolean(currentRestaurant) && <Restaurant {...currentRestaurant} />}
-    </Layout>
+    <AuthContextProvider>
+      <ThemeContextProvider>
+        <Layout title={"Список ресторанов"}>
+          <RestaurantsPage />
+        </Layout>
+      </ThemeContextProvider>
+    </AuthContextProvider>
   );
 };

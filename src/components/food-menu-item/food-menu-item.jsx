@@ -3,8 +3,11 @@ import { Text } from "../typography/text";
 
 import style from "./food-menu-item.module.css";
 import { Title } from "../typography/title";
+import { useAuth } from "../auth-context/use-auth.js";
 
 export const FoodMenuItem = ({ name, price, ingredients }) => {
+  const { auth } = useAuth();
+
   if (!name || !price) {
     return null;
   }
@@ -29,7 +32,7 @@ export const FoodMenuItem = ({ name, price, ingredients }) => {
         </p>
       )}
 
-      <DishCounter />
+      {auth.isAuthorized && <DishCounter />}
     </article>
   );
 };

@@ -2,8 +2,11 @@ import { FoodMenu } from "../food-menu/food-menu.jsx";
 import { Reviews } from "../reviews/reviews.jsx";
 import { Title } from "../typography/title";
 import { ReviewForm } from "../review-form/review-form.jsx";
+import { useAuth } from "../auth-context/use-auth.js";
 
 export const Restaurant = ({ id, name, menu, reviews }) => {
+  const { auth } = useAuth();
+
   if (!name) {
     return null;
   }
@@ -20,7 +23,7 @@ export const Restaurant = ({ id, name, menu, reviews }) => {
         <Reviews reviews={reviews} />
       )}
 
-      <ReviewForm key={id} />
+      {auth.isAuthorized && <ReviewForm key={id} />}
     </article>
   );
 };
