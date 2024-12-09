@@ -6,9 +6,9 @@
     min-height: 100vh;
 }
 
-.header {
-    padding: 2.5rem 0;
-    background-color: var(--color-bright-orange);
+.topPanel {
+    display: flex;
+    justify-content: space-between;
 }
 
 .main {

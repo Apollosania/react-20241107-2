@@ -1,0 +1,11 @@
+.header {
+  padding: 2.5rem 0;
+}
+
+.headerLight {
+  background-color: var(--color-bright-orange);
+}
+
+.headerDark {
+  background-color: var(--color-light-blue-gray);
+}
