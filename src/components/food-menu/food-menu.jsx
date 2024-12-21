@@ -1,17 +1,16 @@
-import { FoodMenuItem } from "../food-menu-item/food-menu-item.jsx";
 import { Title } from "../typography/title";
-
 import style from "./food-menu.module.css";
+import { DishContainer } from "../dish/dish-container";
 
-export const FoodMenu = ({ foodMenu }) => {
+export const FoodMenu = ({ dishesIds }) => {
   return (
     <section>
       <Title level={3}>Меню</Title>
 
       <ul className={style.list}>
-        {foodMenu.map((food) => (
-          <li key={food.id}>
-            <FoodMenuItem {...food} />
+        {dishesIds.map((id) => (
+          <li key={id}>
+            <DishContainer id={id} />
           </li>
         ))}
       </ul>
