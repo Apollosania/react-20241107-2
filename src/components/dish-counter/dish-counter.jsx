@@ -1,18 +1,21 @@
 import { Counter } from "../counter/counter.jsx";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addToCart,
+  removeFromCart,
+  selectCartItemAmountById,
+} from "../../redux/ui/cart-slice.js";
 
-export const DishCounter = () => {
-  const [count, setCount] = useState(0);
+export const DishCounter = ({ id }) => {
+  const amount =
+    useSelector((state) => selectCartItemAmountById(state, id)) || 0;
+  const dispatch = useDispatch();
 
   return (
     <Counter
-      value={count}
-      increment={() =>
-        setCount((currentCount) => Math.min(currentCount + 1, 5))
-      }
-      decrement={() =>
-        setCount((currentCount) => Math.max(currentCount - 1, 0))
-      }
+      value={amount}
+      increment={() => dispatch(addToCart(id))}
+      decrement={() => dispatch(removeFromCart(id))}
     />
   );
 };
