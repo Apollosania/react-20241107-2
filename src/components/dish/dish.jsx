@@ -1,11 +1,10 @@
 import { DishCounter } from "../dish-counter/dish-counter";
 import { Text } from "../typography/text";
-
-import style from "./food-menu-item.module.css";
+import style from "./dish.module.css";
 import { Title } from "../typography/title";
 import { useAuth } from "../auth-context/use-auth.js";
 
-export const FoodMenuItem = ({ name, price, ingredients }) => {
+export const Dish = ({ name, price, ingredients }) => {
   const { auth } = useAuth();
 
   if (!name || !price) {

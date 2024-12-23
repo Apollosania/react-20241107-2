@@ -17,10 +17,10 @@ export const Restaurant = ({ id, name, menu, reviews }) => {
         {name}
       </Title>
 
-      {Array.isArray(menu) && menu.length > 0 && <FoodMenu foodMenu={menu} />}
+      {Array.isArray(menu) && menu.length > 0 && <FoodMenu dishesIds={menu} />}
 
       {Array.isArray(reviews) && reviews.length > 0 && (
-        <Reviews reviews={reviews} />
+        <Reviews ids={reviews} />
       )}
 
       {auth.isAuthorized && <ReviewForm key={id} />}

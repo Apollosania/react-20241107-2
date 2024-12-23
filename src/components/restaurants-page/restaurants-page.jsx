@@ -1,29 +1,33 @@
 import { useState } from "react";
-import { restaurants } from "../../../materials/mock.js";
-import { Tab } from "../tabs/tabs.jsx";
-import { Restaurant } from "../restaurant/restaurant.jsx";
+import { useSelector } from "react-redux";
+import { selectRestaurantsIds } from "../../redux/entities/restaurants/restaurants-slice.js";
+import { RestaurantContainer } from "../restaurant/restaurant-container";
+import { RestaurantTabContainer } from "../restaurant-tab-container/restaurant-tab-container";
 
 export const RestaurantsPage = () => {
-  const [currentRestaurantId, setCurrentRestaurantId] = useState(
-    restaurants[0].id,
-  );
+  const restaurantsIds = useSelector(selectRestaurantsIds);
 
-  const currentRestaurant = restaurants.find(
-    ({ id }) => id === currentRestaurantId,
+  const [currentRestaurantId, setCurrentRestaurantId] = useState(
+    restaurantsIds[0],
   );
 
   return (
     <>
-      {restaurants?.map(({ name, id }) => (
-        <Tab
+      {restaurantsIds?.map((id) => (
+        <RestaurantTabContainer
           key={id}
-          title={name}
+          id={id}
           onClick={() => setCurrentRestaurantId(id)}
           isActive={id === currentRestaurantId}
         />
       ))}
 
-      {Boolean(currentRestaurant) && <Restaurant {...currentRestaurant} />}
+      {Boolean(currentRestaurantId) && (
+        <RestaurantContainer
+          id={currentRestaurantId}
+          key={currentRestaurantId}
+        />
+      )}
     </>
   );
 };
