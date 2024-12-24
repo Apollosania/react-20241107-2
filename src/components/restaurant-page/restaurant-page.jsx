@@ -12,13 +12,13 @@ export const RestaurantPage = () => {
   );
   const { setTitle } = useLayoutTitle();
 
-  if (!restaurant) {
-    return;
-  }
-
   useEffect(() => {
     setTitle(restaurant.name);
   }, [setTitle, restaurant.name]);
+
+  if (!restaurant) {
+    return;
+  }
 
   return <RestaurantContainer id={restaurantId} />;
 };
