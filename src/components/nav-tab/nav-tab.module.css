@@ -1,12 +1,14 @@
 @import '../../variables.css';
 
 .button {
+  display: inline-block;
   font-size: 1.125rem;
   padding: 0.5rem 1rem;
   background-color: var(--color-light-blue-gray);
   border: .0625rem solid var(--color-dark-blue-gray);
   cursor: pointer;
   color: var(--text-color-primary);
+  text-decoration: none;
 }
 
 .buttonActive {

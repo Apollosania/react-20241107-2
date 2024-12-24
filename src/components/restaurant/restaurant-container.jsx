@@ -4,7 +4,6 @@ import { Restaurant } from "./restaurant";
 
 export const RestaurantContainer = ({ id }) => {
   const restaurant = useSelector((state) => selectRestaurantById(state, id));
-
   if (!restaurant) {
     return;
   }

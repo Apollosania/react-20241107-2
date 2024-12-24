@@ -3,8 +3,9 @@ import { Text } from "../typography/text";
 import style from "./dish.module.css";
 import { Title } from "../typography/title";
 import { useAuth } from "../auth-context/use-auth.js";
+import { Link } from "react-router-dom";
 
-export const Dish = ({ name, price, ingredients }) => {
+export const Dish = ({ id, name, price, ingredients }) => {
   const { auth } = useAuth();
 
   if (!name || !price) {
@@ -14,7 +15,7 @@ export const Dish = ({ name, price, ingredients }) => {
   return (
     <article className={style.wrapper}>
       <Title level={4} className={style.title}>
-        {name}
+        <Link to={`/dish/${id}`}>{name}</Link>
       </Title>
 
       <p>
@@ -31,7 +32,7 @@ export const Dish = ({ name, price, ingredients }) => {
         </p>
       )}
 
-      {auth.isAuthorized && <DishCounter />}
+      {auth.isAuthorized && <DishCounter id={id} />}
     </article>
   );
 };
