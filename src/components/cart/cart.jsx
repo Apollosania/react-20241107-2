@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { selectCartItems } from "../../redux/ui/cart-slice.js";
+import { selectCartItems } from "../../redux/ui/cart/cart-slice.js";
 import { CartItem } from "../cart-item/cart-item";
 
 export const Cart = () => {
