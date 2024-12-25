@@ -7,7 +7,7 @@ export const AccountInfo = () => {
 
   return (
     <div className={style.wrapper}>
-      <p>Здравствуйте, {auth.user}!</p>
+      <p>Здравствуйте, {auth.user.name}!</p>
 
       <Button type={"secondary"} onClick={logout}>
         Выйти

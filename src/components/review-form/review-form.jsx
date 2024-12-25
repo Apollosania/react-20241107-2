@@ -6,10 +6,9 @@ import { Button } from "../button/button.jsx";
 
 import style from "./review-from.module.css";
 
-export const ReviewForm = () => {
+export const ReviewForm = ({ onSubmit }) => {
   const {
-    form: { name, text, rating },
-    setName,
+    form: { text, rating },
     setText,
     incrementRating,
     decrementRating,
@@ -26,17 +25,6 @@ export const ReviewForm = () => {
       <Title level={3} className={style.title}>
         Форма отзыва
       </Title>
-
-      <div className={style.formControl}>
-        <label htmlFor="name">
-          <Text>Имя</Text>
-        </label>
-        <input
-          id="name"
-          value={name}
-          onChange={(event) => setName(event.target.value)}
-        />
-      </div>
 
       <div className={style.formControl}>
         <label htmlFor="text">
@@ -60,7 +48,14 @@ export const ReviewForm = () => {
         />
       </div>
 
-      <Button>Отправить</Button>
+      <Button
+        onClick={() => {
+          onSubmit({ text, rating });
+          reset();
+        }}
+      >
+        Отправить
+      </Button>
 
       <Button type={"secondary"} onClick={reset}>
         Очистить

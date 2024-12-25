@@ -1,16 +1,16 @@
 import { Title } from "../typography/title";
 import style from "./reviews.module.css";
-import { ReviewContainer } from "../review/review-container";
+import { Review } from "../review/review.jsx";
 
-export const Reviews = ({ ids }) => {
+export const Reviews = ({ reviews }) => {
   return (
     <section>
       <Title level={3}>Отзывы</Title>
 
       <ul className={style.list}>
-        {ids.map((id) => (
-          <li key={id}>
-            <ReviewContainer id={id} />
+        {reviews?.map((review) => (
+          <li key={review.id}>
+            <Review {...review} />
           </li>
         ))}
       </ul>

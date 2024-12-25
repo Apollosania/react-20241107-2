@@ -10,7 +10,10 @@ export const LoginForm = () => {
   return (
     <form
       onSubmit={() => {
-        login(name);
+        login({
+          name,
+          id: "dfb982e9-b432-4b7d-aec6-7f6ff2e6af54",
+        });
       }}
     >
       <div className={style.wrapper}>
