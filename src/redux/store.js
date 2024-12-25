@@ -3,7 +3,8 @@ import { restaurantsSlice } from "./entities/restaurants/restaurants-slice.js";
 import { dishesSlice } from "./entities/dishes/dishes-slice.js";
 import { reviewsSlice } from "./entities/reviews/reviews-slice";
 import { usersSlice } from "./entities/users/users-slice.js";
-import { cartSlice } from "./ui/cart-slice.js";
+import { cartSlice } from "./ui/cart/cart-slice.js";
+import { requestSlice } from "./ui/request/request-slice.js";
 
 export const store = configureStore({
   reducer: {
@@ -12,5 +13,6 @@ export const store = configureStore({
     [reviewsSlice.name]: reviewsSlice.reducer,
     [usersSlice.name]: usersSlice.reducer,
     [cartSlice.name]: cartSlice.reducer,
+    [requestSlice.name]: requestSlice.reducer,
   },
 });
