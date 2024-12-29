@@ -1,29 +1,29 @@
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { selectRestaurantsIds } from "../../redux/entities/restaurants/restaurants-slice.js";
-import { RestaurantTabContainer } from "../restaurant-tab-container/restaurant-tab-container";
 import { useLayoutTitle } from "../layout-title-context/use-layout-title.js";
 import { Outlet } from "react-router-dom";
-import { useRequest } from "../../redux/hooks/use-request.js";
-import { getRestaurants } from "../../redux/entities/restaurants/get-restaurants.js";
-import { RequestPreloader } from "../request-preloader/request-preloader.jsx";
+import { useGetRestaurantsQuery } from "../../redux/services/api/index.js";
+import { QueryPreloader } from "../query-preloader/query-preloader";
+import { NavTab } from "../nav-tab/nav-tab.jsx";
 
 export const RestaurantsPage = () => {
-  const restaurantsIds = useSelector(selectRestaurantsIds);
   const { setTitle } = useLayoutTitle();
-  const requestStatus = useRequest(getRestaurants);
+  const { data: restaurants, isFetching, isError } = useGetRestaurantsQuery();
 
   useEffect(() => {
     setTitle("Список ресторанов");
   }, [setTitle]);
 
   return (
-    <RequestPreloader requestStatus={requestStatus}>
-      {restaurantsIds?.map((id) => (
-        <RestaurantTabContainer key={id} id={id} />
+    <QueryPreloader {...{ isFetching, isError }}>
+      {restaurants?.map((restaurant) => (
+        <NavTab
+          key={restaurant.id}
+          title={restaurant.name}
+          to={`/restaurants/${restaurant.id}`}
+        />
       ))}
 
       <Outlet />
-    </RequestPreloader>
+    </QueryPreloader>
   );
 };

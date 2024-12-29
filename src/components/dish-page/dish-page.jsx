@@ -1,18 +1,28 @@
 import { useParams } from "react-router-dom";
 import { DishContainer } from "../dish/dish-container";
-import { useSelector } from "react-redux";
 import { useLayoutTitle } from "../layout-title-context/use-layout-title.js";
 import { useEffect } from "react";
-import { selectDishById } from "../../redux/entities/dishes/dishes-slice.js";
+import { useGetDishByIdQuery } from "../../redux/services/api/index.js";
+import { QueryPreloader } from "../query-preloader/query-preloader.jsx";
 
 export const DishPage = () => {
   const { dishId } = useParams();
-  const { name } = useSelector((state) => selectDishById(state, dishId));
+  const { data: dish, isFetching, isError } = useGetDishByIdQuery(dishId);
   const { setTitle } = useLayoutTitle();
 
   useEffect(() => {
-    setTitle(name);
-  }, [setTitle, name]);
+    if (dish) {
+      setTitle(dish.name);
+    }
+  }, [setTitle, dish?.name]);
 
-  return <DishContainer id={dishId} />;
+  if (!dish) {
+    return;
+  }
+
+  return (
+    <QueryPreloader {...{ isFetching, isError }}>
+      <DishContainer id={dishId} />
+    </QueryPreloader>
+  );
 };
