@@ -1,9 +1,8 @@
-import { useSelector } from "react-redux";
-import { selectDishById } from "../../redux/entities/dishes/dishes-slice.js";
 import { Dish } from "./dish";
+import { getDishById } from "../../services/get-dish-by-id.js";
 
-export const DishContainer = ({ id }) => {
-  const dish = useSelector((state) => selectDishById(state, id));
+export const DishContainer = async ({ dishId }) => {
+  const dish = await getDishById(dishId);
 
   if (!dish) {
     return;

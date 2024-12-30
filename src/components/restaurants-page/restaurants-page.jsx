@@ -1,29 +1,12 @@
-import { useEffect } from "react";
-import { useLayoutTitle } from "../layout-title-context/use-layout-title.js";
-import { Outlet } from "react-router-dom";
-import { useGetRestaurantsQuery } from "../../redux/services/api/index.js";
-import { QueryPreloader } from "../query-preloader/query-preloader";
-import { NavTab } from "../nav-tab/nav-tab.jsx";
+import { Suspense } from "react";
+import { RestaurantsContainer } from "./restaurants-container";
 
-export const RestaurantsPage = () => {
-  const { setTitle } = useLayoutTitle();
-  const { data: restaurants, isFetching, isError } = useGetRestaurantsQuery();
-
-  useEffect(() => {
-    setTitle("Список ресторанов");
-  }, [setTitle]);
-
+export const RestaurantsPage = ({ children }) => {
   return (
-    <QueryPreloader {...{ isFetching, isError }}>
-      {restaurants?.map((restaurant) => (
-        <NavTab
-          key={restaurant.id}
-          title={restaurant.name}
-          to={`/restaurants/${restaurant.id}`}
-        />
-      ))}
+    <Suspense fallback={"Загрузка..."}>
+      <RestaurantsContainer />
 
-      <Outlet />
-    </QueryPreloader>
+      {children}
+    </Suspense>
   );
 };
