@@ -1,41 +1,10 @@
-"use client";
-
-import { useLayoutTitle } from "../layout-title-context/use-layout-title.js";
-import { useEffect } from "react";
-import {
-  useGetDishesByRestaurantIdQuery,
-  useGetRestaurantByIdQuery,
-} from "../../redux/services/api/index.js";
-import { QueryPreloader } from "../query-preloader/query-preloader";
 import { FoodMenu } from "./food-menu.jsx";
+import { getDishesByRestaurantId } from "../../services/get-dishes-by-restaurant-id.js";
+import { getRestaurantById } from "../../services/get-restaurant-by-id.js";
 
-export const FoodMenuContainer = ({ restaurantId }) => {
-  const { setTitle } = useLayoutTitle();
-  const {
-    data: dishes,
-    isFetching: isGetDishesFetching,
-    isError: isGetDishesError,
-  } = useGetDishesByRestaurantIdQuery(restaurantId);
-  const {
-    data: restaurant,
-    isFetching: isGetRestaurantFetching,
-    isError: isGetRestaurantError,
-  } = useGetRestaurantByIdQuery(restaurantId);
+export const FoodMenuContainer = async ({ restaurantId }) => {
+  const dishes = await getDishesByRestaurantId(restaurantId);
+  const restaurant = await getRestaurantById(restaurantId);
 
-  useEffect(() => {
-    if (restaurant) {
-      setTitle(`${restaurant.name} - Меню`);
-    }
-  }, [setTitle, restaurant?.name]);
-
-  return (
-    <QueryPreloader
-      {...{
-        isFetching: isGetDishesFetching || isGetRestaurantFetching,
-        isError: isGetDishesError || isGetRestaurantError,
-      }}
-    >
-      <FoodMenu dishes={dishes} />
-    </QueryPreloader>
-  );
+  return <FoodMenu dishes={dishes} pageTitle={restaurant?.name} />;
 };
