@@ -30,10 +30,8 @@ export const FoodMenuContainer = ({ restaurantId }) => {
 
   return (
     <QueryPreloader
-      {...{
-        isFetching: isGetDishesFetching || isGetRestaurantFetching,
-        isError: isGetDishesError || isGetRestaurantError,
-      }}
+      isFetching={isGetDishesFetching || isGetRestaurantFetching}
+      isError={isGetDishesError || isGetRestaurantError}
     >
       <FoodMenu dishes={dishes} />
     </QueryPreloader>
