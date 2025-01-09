@@ -1,3 +1,5 @@
+"use client";
+
 import { AuthContext } from "./index";
 import { useReducer } from "react";
 

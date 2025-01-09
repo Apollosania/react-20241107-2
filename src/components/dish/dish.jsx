@@ -3,7 +3,7 @@ import { Text } from "../typography/text";
 import style from "./dish.module.css";
 import { Title } from "../typography/title";
 import { useAuth } from "../auth-context/use-auth.js";
-import { Link } from "react-router-dom";
+import Link from "next/link.js";
 
 export const Dish = ({ id, name, price, ingredients }) => {
   const { auth } = useAuth();
@@ -15,7 +15,7 @@ export const Dish = ({ id, name, price, ingredients }) => {
   return (
     <article className={style.wrapper}>
       <Title level={4} className={style.title}>
-        <Link to={`/dish/${id}`}>{name}</Link>
+        <Link href={`/dish/${id}`}>{name}</Link>
       </Title>
 
       <p>

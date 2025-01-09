@@ -1,6 +1,8 @@
+"use client";
+
 import { useLayoutTitle } from "../layout-title-context/use-layout-title.js";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link.js";
 
 export const HomePage = () => {
   const { setTitle } = useLayoutTitle();
@@ -12,7 +14,7 @@ export const HomePage = () => {
   return (
     <>
       <p>Добро пожаловать на главную страницу списка ресторанов</p>
-      <Link to={"restaurants"}>Перейти к списку ресторанов</Link>
+      <Link href={"/restaurants"}>Перейти к списку ресторанов</Link>
     </>
   );
 };
